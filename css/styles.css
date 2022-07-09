@@ -1,0 +1,57 @@
+
+/* ELEMENTS */
+
+html {
+  background-color: #dfe3eb;
+  line-height: 0.5;
+}
+
+img {
+  border-radius: 50%;
+  width: 60px;
+}
+
+p {
+  font-size: .75rem;
+  color: #6a707a;
+}
+
+h1 {
+  color: #424852;
+  margin-left: 30px;
+  padding-top: 40px;
+  font-size: 1.25rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+/* CLASSES */
+
+.flex-cot {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 5%;
+  align-items: center;
+  padding: 25px;
+  padding-top: 15px;
+}
+
+.flex-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  background-color: #ffffff;
+  border-radius: 2%;
+  border-style: solid;
+  border-width: thin;
+  border-color: #424852;
+}
+
+.info {
+  padding-left: 5%;
+  padding-right: 5%;
+}

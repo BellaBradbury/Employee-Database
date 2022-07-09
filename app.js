@@ -16,10 +16,12 @@ function createEmployee(data) {
   data.forEach( employee => {
     const thumbnail = `
       <div class='flex-item'>
-        <img src="${employee.picture.thumbnail}">
-        <h2>${employee.name.first} ${employee.name.last}</h2>
-        <p>${employee.email}</p>
-        <p>${employee.location.city}, ${employee.location.state}</p>
+        <img src="${employee.picture.medium}">
+        <div class='info'>
+          <h2>${employee.name.first} ${employee.name.last}</h2>
+          <p>${employee.email}</p>
+          <p>${employee.location.city}, ${employee.location.state}</p>
+          </div>
       </div>
     `;
     database.insertAdjacentHTML('beforeend', thumbnail);
@@ -29,7 +31,7 @@ function createEmployee(data) {
 
 // const overlay = `
 // <div class='overlay'>
-//   <img src="${employee.picture.thumbnail}">
+//   <img src="${employee.picture.medium}">
 //   <h2>${employee.name.first} ${employee.name.last}</h2>
 //   <p>${employee.email}</p>
 //   <p>${employee.location.city}/p>
