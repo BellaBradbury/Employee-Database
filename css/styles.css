@@ -1,8 +1,15 @@
+/* WHITE * #ffffff */
+/* LIGHT GREY * #dfe3eb  */
+/* MEDIUM GREY * #6a707a */
+/* DARK GREY * #424852 */
+/* BLACK * #000000 */
+/* BLUE * #1b40f7 * rgba(27, 64, 247)*/
+
 
 /* ELEMENTS */
 
 html {
-  background-color: #dfe3eb;
+  background-color: #dfe3eb; /* LIGHT GREY */
   line-height: 0.5;
 }
 
@@ -13,11 +20,11 @@ img {
 
 p {
   font-size: .75rem;
-  color: #6a707a;
+  color: #6a707a; /* MEDIUM GREY */
 }
 
 h1 {
-  color: #424852;
+  color: #424852; /* DARK GREY */
   margin-left: 30px;
   padding-top: 40px;
   font-size: 1.25rem;
@@ -44,14 +51,56 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 5%;
-  background-color: #ffffff;
+  background-color: #ffffff; /* WHITE */
   border-radius: 2%;
   border-style: solid;
   border-width: thin;
-  border-color: #424852;
+  border-color: #424852; /* DARK GREY */
 }
 
 .info {
   padding-left: 5%;
   padding-right: 5%;
 }
+
+.search-form {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-right: 3%;
+  margin-bottom: 5%;
+}
+
+.search-btn {
+  width: 10%;
+  border: none;
+  border-top: 2px solid #424852; /* DARK GREY */
+  border-right: 2px solid #424852; /* DARK GREY */
+  border-bottom: 2px solid #424852; /* DARK GREY */
+  background-color: #424852; /* DARK GREY */
+  color: #dfe3eb; /* LIGHT GREY */
+}
+
+      .search-btn:focus {
+        background-color: rgba(27, 64, 247, .5); /* BLUE */
+        color: #000000; /* BLACK */
+      }
+
+
+
+/* IDS */
+
+#search {
+ width: 30%;
+ background-color: #ffffff; /* WHITE */
+ color: #6a707a; /* MEDIUM GREY */
+ border: none;
+ border-top: 2px solid #424852; /* DARK GREY */
+ border-left: 2px solid #424852; /* DARK GREY */
+ border-bottom: 2px solid #424852; /* DARK GREY */
+}
+
+      #search:focus {
+        color: #000000; /* BLACK */
+      }
