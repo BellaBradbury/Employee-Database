@@ -1,5 +1,7 @@
 const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
 const database = document.querySelector('#employees');
+const searchInput = document.querySelector('input').value.toLowerCase();
+let namesArr = [];
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
@@ -18,7 +20,7 @@ function createEmployee(data) {
       <div class='flex-item'>
         <img src="${employee.picture.medium}">
         <div class='info'>
-          <h2>${employee.name.first} ${employee.name.last}</h2>
+          <h2 class="name">${employee.name.first} ${employee.name.last}</h2>
           <p>${employee.email}</p>
           <p>${employee.location.city}, ${employee.location.state}</p>
           </div>
@@ -28,6 +30,15 @@ function createEmployee(data) {
   });
 }
 
+
+// CREATES AN ARRAY OF EMPLOYEE NAMES FOR THE SEARCH BAR
+var employeeNames = document.querySelectorAll('.name').value;
+
+for ( var i = 0; i < employeeNames.length; i++ ) {
+  namesArr.push(employeeNames[i].value);
+}
+
+console.log(namesArr);
 
 
 // const overlay = `
@@ -42,3 +53,11 @@ function createEmployee(data) {
 //   <p>Birthday:***BIRTHDAY***</p>
 // </div>
 // `;
+
+
+// SEARCHES TO SEE IF SEARCH FIELD INPUT MATCHES A LISTED EMPLOYEE
+// function searchBar(e) {
+//   data.forEach( employeeName => {
+//     if (searchInput === )
+//   );
+// }
