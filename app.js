@@ -1,21 +1,27 @@
-const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
+const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=index,name,location,email,dob,cell,picture";
 const database = document.querySelector('#employees');
 const searchInput = document.querySelector('input').value.toLowerCase();
-let namesArr = [];
+let employeeArr = [];
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
 function fetchData() {
-  fetch(url)
+  return fetch(url)
     .then( response => response.json() )
-    .then( info => createEmployee(info.results))
+    .then( info => {
+      const data = info.results;
+      createEmployee(info.results);
+    })
     .catch( error => console.log('ERROR:', error) );
 }
 
 fetchData();
 
 function createEmployee(data) {
-  data.forEach( employee => {
+  data.map( employee => {
+    let name = `${employee.name.first} ${employee.name.last}`;
+    let index = 0;
+
     const thumbnail = `
       <div class='flex-item'>
         <img src="${employee.picture.medium}">
@@ -26,19 +32,17 @@ function createEmployee(data) {
           </div>
       </div>
     `;
+
+    const object = {
+      name
+    }
+    employeeArr.push(object);
+
     database.insertAdjacentHTML('beforeend', thumbnail);
   });
 }
 
-
-// CREATES AN ARRAY OF EMPLOYEE NAMES FOR THE SEARCH BAR
-var employeeNames = document.querySelectorAll('.name').value;
-
-for ( var i = 0; i < employeeNames.length; i++ ) {
-  namesArr.push(employeeNames[i].value);
-}
-
-console.log(namesArr);
+console.log(employeeArr);
 
 
 // const overlay = `
