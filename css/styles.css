@@ -28,6 +28,8 @@ h1 {
   margin-left: 30px;
   padding-top: 40px;
   font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
 }
 
 h2 {
@@ -38,10 +40,10 @@ h2 {
 
 .flex-cot {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-gap: 5%;
+  grid-template-columns: 80%;
+  grid-gap: 2%;
   align-items: center;
-  padding: 25px;
+  justify-content: center;
   padding-top: 15px;
 }
 
@@ -65,7 +67,7 @@ h2 {
 
 .search-form {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-right: 3%;
@@ -73,7 +75,7 @@ h2 {
 }
 
 .search-btn {
-  width: 10%;
+  width: 20%;
   border: none;
   border-top: 2px solid #424852; /* DARK GREY */
   border-right: 2px solid #424852; /* DARK GREY */
@@ -104,3 +106,38 @@ h2 {
       #search:focus {
         color: #000000; /* BLACK */
       }
+
+
+/* MEDIA QUIRIES */
+
+@media (min-width: 768px) {
+
+  h1 {
+    text-align: left;
+  }
+
+  .search-form {
+    justify-content: flex-end;
+  }
+
+  .search-btn {
+    width: 10%;
+  }
+
+  .flex-cot {
+    grid-template-columns: 40% 40%;
+    grid-gap: 5%;
+    padding: 25px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .flex-cot {
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    padding: 25px;
+  }
+
+}
