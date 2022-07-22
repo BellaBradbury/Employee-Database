@@ -1,7 +1,9 @@
 const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=index,name,location,email,dob,cell,picture";
 const database = document.querySelector('#employees');
-const searchInput = document.querySelector('input').value.toLowerCase();
+const pageHeader = document.querySelector('.header');
+const userSearch = document.getElementById('#search');
 let employeeArr = [];
+let searchArr = [];
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
@@ -44,6 +46,34 @@ function createEmployee(data) {
 
 console.log(employeeArr);
 
+// CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
+let searchBar = `
+  <label for="search" class="search-form">
+    <input id="search" placeholder="Search by name...">
+    <button type="button" class="search-btn">SEARCH</button>
+  </label>
+`;
+
+pageHeader.insertAdjacentHTML('beforeend', searchBar);
+
+// CHECKS USER INPUT AGAINST KNOWN PROFILES AND DISPLAYS THEM
+// const searchEmployees = (searchValue, employeeArr) => {
+//
+//   for ( let i = 0; i < employeeArr.length; i++ ) {
+//     if ( employeeArr[i].includes(searchValue) ) {
+//       searchArr.push(employeeArr[i]);
+//     }
+//   }
+//     createEmployee(searchArr,1);
+// };
+//
+// console.log(searchArr);
+
+// CALLS SEARCH FUNCTION
+// userSearch.addEventListener('keyup', (event) => {
+//   let searchInput = event.target.value.toLowerCase();
+//   searchEmployees(searchInput);
+// });
 
 // const overlay = `
 // <div class='overlay'>
@@ -57,11 +87,3 @@ console.log(employeeArr);
 //   <p>Birthday:***BIRTHDAY***</p>
 // </div>
 // `;
-
-
-// SEARCHES TO SEE IF SEARCH FIELD INPUT MATCHES A LISTED EMPLOYEE
-// function searchBar(e) {
-//   data.forEach( employeeName => {
-//     if (searchInput === )
-//   );
-// }
