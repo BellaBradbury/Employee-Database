@@ -65,6 +65,10 @@ h2 {
   padding-right: 5%;
 }
 
+.overlay {
+  display: none;
+}
+
 .search-form {
   display: flex;
   justify-content: center;

@@ -1,6 +1,9 @@
-const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=index,name,location,email,dob,cell,picture";
+const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
 const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
+const overlay = document.createElement('div');
+const emWindow = document.createElement('div');
+const emInfo = document.createElement('div');
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
 let searchArr = [];
@@ -20,23 +23,50 @@ function fetchData() {
 fetchData();
 
 function createEmployee(data) {
+  let number = 0;
+
   data.map( employee => {
+    number += 1;
+
+    let pfp = `${employee.picture.medium}`;
     let name = `${employee.name.first} ${employee.name.last}`;
-    let index = 0;
+    let email = `${employee.email}`;
+    let city = `${employee.location.city}`;
+    let state = `${employee.location.state}`;
+    let phone = `${employee.cell}`;
+    let address = `${employee.location.street.number} ${employee.location.street.name}, ${city}, ${state}, ${employee.location.postcode}`;
+    let xDOB = `${employee.dob.date}`;
+
+    function getDOB(data) {
+      let birthday = xDOB.replace(/[^\d]/g, '');
+      birthday = birthday.replace(/(\d{4})(\d{2})(\d{2})(\d+)/, "$2/$3/$1");
+      return birthday;
+    }
+
+    let dob = getDOB(xDOB);
+
 
     const thumbnail = `
       <div class='flex-item'>
-        <img src="${employee.picture.medium}">
+        <img src="${pfp}">
         <div class='info'>
-          <h2 class="name">${employee.name.first} ${employee.name.last}</h2>
-          <p>${employee.email}</p>
-          <p>${employee.location.city}, ${employee.location.state}</p>
+          <h2 class="name">${name}</h2>
+          <p>${email}</p>
+          <p>${city}, ${state}</p>
           </div>
       </div>
     `;
 
     const object = {
-      name
+      number,
+      pfp,
+      name,
+      email,
+      city,
+      state,
+      phone,
+      address,
+      dob
     }
     employeeArr.push(object);
 
@@ -45,6 +75,30 @@ function createEmployee(data) {
 }
 
 console.log(employeeArr);
+
+function createOverlay(Number) {
+
+  const overlay = `
+  <div class='overlay'>
+    <img src="${employee.picture.medium}">
+    <h2>${name}</h2>
+    <p>${email}</p>
+    <p>${city}/p>
+    <hr>
+    <p>${phone}</p>
+    <p>${address}</p>
+    <p>Birthday:***BIRTHDAY***</p>
+  </div>
+  `;
+
+
+}
+
+// database.addEventListener( 'click', e => {
+//   if (e.target !== ('name') || e.target !== 'IMG' ) {
+//     overlay.display = 'block';
+//   }
+// });
 
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
 let searchBar = `
@@ -74,16 +128,3 @@ pageHeader.insertAdjacentHTML('beforeend', searchBar);
 //   let searchInput = event.target.value.toLowerCase();
 //   searchEmployees(searchInput);
 // });
-
-// const overlay = `
-// <div class='overlay'>
-//   <img src="${employee.picture.medium}">
-//   <h2>${employee.name.first} ${employee.name.last}</h2>
-//   <p>${employee.email}</p>
-//   <p>${employee.location.city}/p>
-//   <hr>
-//   <p>${employee.cell}</p>
-//   <p>${employee.location.street}, ${employee.location.city}, ${employee.location.state}, ${employee.location.postcode}</p>
-//   <p>Birthday:***BIRTHDAY***</p>
-// </div>
-// `;
