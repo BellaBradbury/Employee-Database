@@ -1,9 +1,7 @@
 const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
 const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
-const overlay = document.createElement('div');
-const emWindow = document.createElement('div');
-const emInfo = document.createElement('div');
+const emWindow = document.getElementById('#window');
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
 let searchArr = [];
@@ -23,10 +21,10 @@ function fetchData() {
 fetchData();
 
 function createEmployee(data) {
-  let number = 0;
+  let emNumber = 0;
 
   data.map( employee => {
-    number += 1;
+    emNumber += 1;
 
     let pfp = `${employee.picture.medium}`;
     let name = `${employee.name.first} ${employee.name.last}`;
@@ -58,7 +56,7 @@ function createEmployee(data) {
     `;
 
     const object = {
-      number,
+      emNumber,
       pfp,
       name,
       email,
@@ -76,29 +74,29 @@ function createEmployee(data) {
 
 console.log(employeeArr);
 
-function createOverlay(Number) {
+function createOverlay(emNumber) {
+  let {pfp, name, email, city, phone, address, dob} = employeeArr[emNumber];
 
-  const overlay = `
-  <div class='overlay'>
-    <img src="${employee.picture.medium}">
+  emWindow.innerHTML = `
+    <img src="${pfp}">
     <h2>${name}</h2>
     <p>${email}</p>
     <p>${city}/p>
     <hr>
     <p>${phone}</p>
     <p>${address}</p>
-    <p>Birthday:***BIRTHDAY***</p>
-  </div>
+    <p>${dob}</p>
   `;
-
 
 }
 
-// database.addEventListener( 'click', e => {
-//   if (e.target !== ('name') || e.target !== 'IMG' ) {
-//     overlay.display = 'block';
-//   }
-// });
+database.addEventListener( 'click', e => {
+  if (e.target !== database ) {
+    const liveEmployee = e.target.closest('.flex-item');
+    const liveNumber = liveEmployee.getAttribute('data-emNumber');
+    createOverlay(liveNumber);
+  }
+});
 
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
 let searchBar = `
