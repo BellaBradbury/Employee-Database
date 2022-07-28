@@ -5,6 +5,7 @@ const emWindow = document.getElementById('#window');
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
 let searchArr = [];
+let overlay = '';
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
@@ -55,6 +56,19 @@ function createEmployee(data) {
       </div>
     `;
 
+    overlay = `
+      <div class="${emNumber}">
+        <img src="${pfp}">
+        <h2>${name}</h2>
+        <p>${email}</p>
+        <p>${city}/p>
+        <hr>
+        <p>${phone}</p>
+        <p>${address}</p>
+        <p>${dob}</p>
+      </div>
+    `;
+
     const object = {
       emNumber,
       pfp,
@@ -72,29 +86,15 @@ function createEmployee(data) {
   });
 }
 
-console.log(employeeArr);
-
-function createOverlay(emNumber) {
-  let {pfp, name, email, city, phone, address, dob} = employeeArr[emNumber];
-
-  emWindow.innerHTML = `
-    <img src="${pfp}">
-    <h2>${name}</h2>
-    <p>${email}</p>
-    <p>${city}/p>
-    <hr>
-    <p>${phone}</p>
-    <p>${address}</p>
-    <p>${dob}</p>
-  `;
-
-}
-
 database.addEventListener( 'click', e => {
   if (e.target !== database ) {
     const liveEmployee = e.target.closest('.flex-item');
     const liveNumber = liveEmployee.getAttribute('data-emNumber');
-    createOverlay(liveNumber);
+    const overlayClass = overlay.getAttribute('class');
+
+    if ( liveNumber === overlayClass ) {
+      overlay.display = block;
+    }
   }
 });
 
