@@ -1,11 +1,15 @@
 const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
+
 const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
+
 const emWindow = document.getElementById('#window');
+const thumbItems = document.querySelectorAll('.thumbnail');
+const overItems = document.querySelectorAll('.overlay');
+
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
 let searchArr = [];
-let overlay = '';
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
@@ -44,30 +48,23 @@ function createEmployee(data) {
 
     let dob = getDOB(xDOB);
 
-
-    const thumbnail = `
+    const emInfo = `
       <div class='flex-item'>
         <img src="${pfp}">
         <div class='info'>
           <h2 class="name">${name}</h2>
           <p>${email}</p>
-          <p>${city}, ${state}</p>
+          <p class="thumbnail">${city}, ${state}</p>
+          <p class="overlay">${city}/p>
+          <hr class="overlay">
+          <p class="overlay">${phone}</p>
+          <p class="overlay">${address}</p>
+          <p class="overlay">${dob}</p>
           </div>
       </div>
     `;
 
-    overlay = `
-      <div class="${emNumber}">
-        <img src="${pfp}">
-        <h2>${name}</h2>
-        <p>${email}</p>
-        <p>${city}/p>
-        <hr>
-        <p>${phone}</p>
-        <p>${address}</p>
-        <p>${dob}</p>
-      </div>
-    `;
+    overItems.classList.add('hidden');
 
     const object = {
       emNumber,
@@ -82,19 +79,19 @@ function createEmployee(data) {
     }
     employeeArr.push(object);
 
-    database.insertAdjacentHTML('beforeend', thumbnail);
+    database.insertAdjacentHTML('beforeend', emInfo);
   });
 }
 
-database.addEventListener( 'click', e => {
-  if (e.target !== database ) {
-    const liveEmployee = e.target.closest('.flex-item');
-    const liveNumber = liveEmployee.getAttribute('data-emNumber');
-    const overlayClass = overlay.getAttribute('class');
+console.log(employeeArr);
 
-    if ( liveNumber === overlayClass ) {
-      overlay.display = block;
-    }
+database.addEventListener( 'click', e => {
+  if (e.target === database ) {
+    const liveEmployee = e.target.closest('.flex-item');
+
+    thumbItems.classList.add('hidden');
+    overItems.classList.remove('hidden');
+    overItems.classList.add('active');
   }
 });
 
