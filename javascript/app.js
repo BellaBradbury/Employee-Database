@@ -85,6 +85,8 @@ function createEmployee(data) {
 
 console.log(employeeArr);
 
+// MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
+
 database.addEventListener( 'click', e => {
   if (e.target === database ) {
     const liveEmployee = e.target.closest('.flex-item');
