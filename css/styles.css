@@ -65,8 +65,12 @@ h2 {
   padding-right: 5%;
 }
 
-.overlay {
+.hidden {
   display: none;
+}
+
+.active {
+  display: block;
 }
 
 .search-form {
