@@ -4,8 +4,6 @@ const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
 
 const emWindow = document.getElementById('#window');
-const thumbItems = document.querySelectorAll('.thumbnail');
-const overItems = document.querySelectorAll('.overlay');
 
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
@@ -18,6 +16,7 @@ function fetchData() {
     .then( response => response.json() )
     .then( info => {
       const data = info.results;
+      employeeArr = info.results;
       createEmployee(info.results);
     })
     .catch( error => console.log('ERROR:', error) );
@@ -48,47 +47,43 @@ function createEmployee(data) {
 
     let dob = getDOB(xDOB);
 
-    const emInfo = `
-      <div class='flex-item'>
+    const emCardInfo = `
+      <div class='flex-item emCard' >
         <img src="${pfp}">
-        <div class='info'>
-          <h2 class="name">${name}</h2>
+        <div>
+          <h2>${name}</h2>
           <p>${email}</p>
-          <p class="thumbnail">${city}, ${state}</p>
-          <p class="overlay">${city}/p>
-          <hr class="overlay">
-          <p class="overlay">${phone}</p>
-          <p class="overlay">${address}</p>
-          <p class="overlay">${dob}</p>
+          <p>${city}, ${state}</p>
           </div>
       </div>
     `;
 
-    overItems.classList.add('hidden');
+    const emWindowInfo = `
+      <div class = "modal-info">
+        <img src="${pfp}">
+        <h2>${name}</h2>
+        <p>${email}</p>
+        <p>${city}/p>
+        <hr>
+        <p>${phone}</p>
+        <p>${address}</p>
+        <p>${dob}</p>
+      </div>
+    `
 
-    const object = {
-      emNumber,
-      pfp,
-      name,
-      email,
-      city,
-      state,
-      phone,
-      address,
-      dob
-    }
-    employeeArr.push(object);
-
-    database.insertAdjacentHTML('beforeend', emInfo);
+    database.insertAdjacentHTML('beforeend', emCardInfo);
   });
-}
 
-console.log(employeeArr);
+}
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
 
+function createModal (EmNumber) {
+  if ()
+}
+
 database.addEventListener( 'click', e => {
-  if (e.target === database ) {
+  if ( e.target === database ) {
     const liveEmployee = e.target.closest('.flex-item');
 
     thumbItems.classList.add('hidden');
