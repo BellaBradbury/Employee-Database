@@ -57,11 +57,6 @@ function createEmployee(data) {
           <h2>${name}</h2>
           <p>${email}</p>
           <p>${city}, ${state}</p>
-          <p class="thumbItem hidden">${city}/p>
-          <hr class="thumbItem hidden">
-          <p class="thumbItem hidden">${phone}</p>
-          <p class="thumbItem hidden">${address}</p>
-          <p class="thumbItem hidden">${dob}</p>
           </div>
       </div>
     `;
@@ -73,12 +68,27 @@ function createEmployee(data) {
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
 
-// function createModal (emCard, employeeArr) {
-//   thumbItem
-// }
+function createModal(emCard, employeeArr) {
+  const emWindowInfo = `
+    <div class='${emNumber} emModal' >
+      <img src="${pfp}">
+      <div>
+        <h2 class="thumbItem">${name}</h2>
+        <p class='thumbItem'>${email}</p>
+        <p class="thumbItem">${city}/p>
+        <hr class="thumbItem">
+        <p class="thumbItem">${phone}</p>
+        <p class="thumbItem">${address}</p>
+        <p class="thumbItem">${dob}</p>
+        </div>
+    </div>
+  `;
 
-emCard.addEventListener( 'click', e => {
-  thumbItem.classList.remove('hidden');
+  emWindow.insertAdjacentHTML('beforeend', emWindowInfo);
+}
+
+database.addEventListener( 'click', e => {
+  createModal();
 });
 
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
