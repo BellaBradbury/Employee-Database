@@ -28,30 +28,19 @@ function fetchData() {
 fetchData();
 
 function createEmployee(data) {
-  let emNumber = 0;
+  // let emNumber = 0;
 
-  data.map( employee => {
-    emNumber += 1;
+  data.map( ( employee, index ) => {
+    // emNumber += 1;
 
     let pfp = `${employee.picture.medium}`;
     let name = `${employee.name.first} ${employee.name.last}`;
     let email = `${employee.email}`;
     let city = `${employee.location.city}`;
     let state = `${employee.location.state}`;
-    let phone = `${employee.cell}`;
-    let address = `${employee.location.street.number} ${employee.location.street.name}, ${city}, ${state}, ${employee.location.postcode}`;
-    let xDOB = `${employee.dob.date}`;
-
-    function getDOB(data) {
-      let birthday = xDOB.replace(/[^\d]/g, '');
-      birthday = birthday.replace(/(\d{4})(\d{2})(\d{2})(\d+)/, "$2/$3/$1");
-      return birthday;
-    }
-
-    let dob = getDOB(xDOB);
 
     const emCardInfo = `
-      <div class='flex-item ${emNumber} emCard' >
+      <div class='flex-item emCard' data-index=${index} >
         <img src="${pfp}">
         <div>
           <h2>${name}</h2>
@@ -68,9 +57,28 @@ function createEmployee(data) {
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
 
-function createModal(emCard, employeeArr) {
+function createModal(index) {
+  const employee = employeeArr[index];
+
+  let pfp = `${employee.picture.medium}`;
+  let name = `${employee.name.first} ${employee.name.last}`;
+  let email = `${employee.email}`;
+  let city = `${employee.location.city}`;
+  let state = `${employee.location.state}`;
+  let phone = `${employee.cell}`;
+  let address = `${employee.location.street.number} ${employee.location.street.name}, ${city}, ${state}, ${employee.location.postcode}`;
+  let xDOB = `${employee.dob.date}`;
+
+  function getDOB(data) {
+    let birthday = xDOB.replace(/[^\d]/g, '');
+    birthday = birthday.replace(/(\d{4})(\d{2})(\d{2})(\d+)/, "$2/$3/$1");
+    return birthday;
+  }
+
+  let dob = getDOB(xDOB);
+
   const emWindowInfo = `
-    <div class='${emNumber} emModal' >
+    <div class='emModal' >
       <img src="${pfp}">
       <div>
         <h2 class="thumbItem">${name}</h2>
@@ -79,16 +87,19 @@ function createModal(emCard, employeeArr) {
         <hr class="thumbItem">
         <p class="thumbItem">${phone}</p>
         <p class="thumbItem">${address}</p>
-        <p class="thumbItem">${dob}</p>
+        <p class="thumbItem">Birthday: ${dob}</p>
         </div>
     </div>
   `;
 
-  emWindow.insertAdjacentHTML('beforeend', emWindowInfo);
+  console.log(emWindowInfo);
+
+  // emWindow.insertAdjacentHTML('beforeend', emWindowInfo);
 }
 
 database.addEventListener( 'click', e => {
-  createModal();
+  const index = e.target.closest('.emCard').dataset.index;
+  createModal(index);
 });
 
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
