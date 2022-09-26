@@ -6,6 +6,7 @@ const pageHeader = document.querySelector('.header');
 const emCard = document.getElementsByClassName('emCard');
 
 const emWindow = document.getElementById('#window');
+const windowContent = document.querySelector('.window-content');
 const thumbItem = document.getElementsByClassName('thumbItem');
 
 const userSearch = document.getElementById('#search');
@@ -52,7 +53,6 @@ function createEmployee(data) {
 
     database.insertAdjacentHTML('beforeend', emCardInfo);
   });
-
 }
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
@@ -83,7 +83,7 @@ function createModal(index) {
       <div>
         <h2 class="thumbItem">${name}</h2>
         <p class='thumbItem'>${email}</p>
-        <p class="thumbItem">${city}/p>
+        <p class="thumbItem">${city}</p>
         <hr class="thumbItem">
         <p class="thumbItem">${phone}</p>
         <p class="thumbItem">${address}</p>
@@ -92,9 +92,8 @@ function createModal(index) {
     </div>
   `;
 
+  windowContent.innerHTML = emWindowInfo;
   console.log(emWindowInfo);
-
-  // emWindow.insertAdjacentHTML('beforeend', emWindowInfo);
 }
 
 database.addEventListener( 'click', e => {
