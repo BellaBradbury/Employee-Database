@@ -3,7 +3,10 @@ const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,
 const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
 
+const emCard = document.getElementsByClassName('emCard');
+
 const emWindow = document.getElementById('#window');
+const thumbItem = document.getElementsByClassName('thumbItem');
 
 const userSearch = document.getElementById('#search');
 let employeeArr = [];
@@ -48,28 +51,20 @@ function createEmployee(data) {
     let dob = getDOB(xDOB);
 
     const emCardInfo = `
-      <div class='flex-item emCard' >
+      <div class='flex-item ${emNumber} emCard' >
         <img src="${pfp}">
         <div>
           <h2>${name}</h2>
           <p>${email}</p>
           <p>${city}, ${state}</p>
+          <p class="thumbItem hidden">${city}/p>
+          <hr class="thumbItem hidden">
+          <p class="thumbItem hidden">${phone}</p>
+          <p class="thumbItem hidden">${address}</p>
+          <p class="thumbItem hidden">${dob}</p>
           </div>
       </div>
     `;
-
-    const emWindowInfo = `
-      <div class = "modal-info">
-        <img src="${pfp}">
-        <h2>${name}</h2>
-        <p>${email}</p>
-        <p>${city}/p>
-        <hr>
-        <p>${phone}</p>
-        <p>${address}</p>
-        <p>${dob}</p>
-      </div>
-    `
 
     database.insertAdjacentHTML('beforeend', emCardInfo);
   });
@@ -78,18 +73,12 @@ function createEmployee(data) {
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
 
-function createModal (EmNumber) {
-  if ()
-}
+// function createModal (emCard, employeeArr) {
+//   thumbItem
+// }
 
-database.addEventListener( 'click', e => {
-  if ( e.target === database ) {
-    const liveEmployee = e.target.closest('.flex-item');
-
-    thumbItems.classList.add('hidden');
-    overItems.classList.remove('hidden');
-    overItems.classList.add('active');
-  }
+emCard.addEventListener( 'click', e => {
+  thumbItem.classList.remove('hidden');
 });
 
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
