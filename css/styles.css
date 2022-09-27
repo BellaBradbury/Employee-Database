@@ -1,5 +1,6 @@
 /* WHITE * #ffffff */
-/* LIGHT GREY * #dfe3eb  */
+
+/* LIGHT GREY * #f0f1f2  */
 /* MEDIUM GREY * #6a707a */
 /* DARK GREY * #424852 */
 /* BLACK * #000000 */
@@ -9,7 +10,7 @@
 /* ELEMENTS */
 
 html {
-  background-color: #dfe3eb; /* LIGHT GREY */
+  background-color: #f0f1f2; /* LIGHT GREY */
   line-height: 0.5;
 }
 
@@ -34,6 +35,12 @@ h1 {
 
 h2 {
   font-size: 1rem;
+  color: black;
+}
+
+hr {
+  max-width: 75%;
+  /* border-color: #f0f1f2; LIGHT GREY */
 }
 
 /* CLASSES */
@@ -89,7 +96,7 @@ h2 {
   border-right: 2px solid #424852; /* DARK GREY */
   border-bottom: 2px solid #424852; /* DARK GREY */
   background-color: #424852; /* DARK GREY */
-  color: #dfe3eb; /* LIGHT GREY */
+  color: white;
 }
 
       .search-btn:focus {
@@ -97,6 +104,32 @@ h2 {
         color: #000000; /* BLACK */
       }
 
+.thumbItem {
+  text-align: center;
+  font-size: 125%;
+}
+
+.name {
+  font-size: 200%;
+}
+
+.emModal {
+  min-width: 38%;
+  max-width: 38%;
+  min-height: 50%;
+  max-height: 50%;
+  position: fixed;
+  top: 26.7%;
+  left: 31%;
+  background-color: #ffffff; /* WHITE */
+  border-radius: 15px;
+}
+
+.pic {
+  min-width: 30%;
+  max-width: 30%;
+  margin: 4% 35%;
+}
 
 
 /* IDS */

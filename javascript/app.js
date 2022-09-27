@@ -60,7 +60,7 @@ function createEmployee(data) {
 function createModal(index) {
   const employee = employeeArr[index];
 
-  let pfp = `${employee.picture.medium}`;
+  let pic = `${employee.picture.large}`;
   let name = `${employee.name.first} ${employee.name.last}`;
   let email = `${employee.email}`;
   let city = `${employee.location.city}`;
@@ -79,9 +79,9 @@ function createModal(index) {
 
   const emWindowInfo = `
     <div class='emModal' >
-      <img src="${pfp}">
+      <img src="${pic}" class="pic">
       <div>
-        <h2 class="thumbItem">${name}</h2>
+        <h2 class="thumbItem name">${name}</h2>
         <p class='thumbItem'>${email}</p>
         <p class="thumbItem">${city}</p>
         <hr class="thumbItem">
