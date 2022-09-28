@@ -80,14 +80,15 @@ function createModal(index) {
   const emWindowInfo = `
     <div class="grey">
       <div class='emModal' >
+        <button type="submit" class="exit-btn">X</button>
         <img src="${pic}" class="pic">
         <div class="thumb-text">
           <h2 class="thumbItem name">${name}</h2>
-          <p class='thumbItem thumb-wrap'>${email}</p>
+          <p class='thumbItem'>${email}</p>
           <p class="thumbItem">${city}</p>
           <hr class="thumbItem">
           <p class="thumbItem">${phone}</p>
-          <p class="thumbItem thumb-wrap">${address}</p>
+          <p class="thumbItem">${address}</p>
           <p class="thumbItem">Birthday: ${dob}</p>
         </div>
       </div>
