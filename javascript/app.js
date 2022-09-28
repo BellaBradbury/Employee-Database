@@ -78,17 +78,19 @@ function createModal(index) {
   let dob = getDOB(xDOB);
 
   const emWindowInfo = `
-    <div class='emModal' >
-      <img src="${pic}" class="pic">
-      <div>
-        <h2 class="thumbItem name">${name}</h2>
-        <p class='thumbItem'>${email}</p>
-        <p class="thumbItem">${city}</p>
-        <hr class="thumbItem">
-        <p class="thumbItem">${phone}</p>
-        <p class="thumbItem">${address}</p>
-        <p class="thumbItem">Birthday: ${dob}</p>
+    <div class="grey">
+      <div class='emModal' >
+        <img src="${pic}" class="pic">
+        <div class="thumb-text">
+          <h2 class="thumbItem name">${name}</h2>
+          <p class='thumbItem thumb-wrap'>${email}</p>
+          <p class="thumbItem">${city}</p>
+          <hr class="thumbItem">
+          <p class="thumbItem">${phone}</p>
+          <p class="thumbItem thumb-wrap">${address}</p>
+          <p class="thumbItem">Birthday: ${dob}</p>
         </div>
+      </div>
     </div>
   `;
 

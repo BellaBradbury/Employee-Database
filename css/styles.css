@@ -12,6 +12,7 @@
 html {
   background-color: #f0f1f2; /* LIGHT GREY */
   line-height: 0.5;
+  overflow-wrap: break-word;
 }
 
 img {
@@ -39,7 +40,7 @@ h2 {
 }
 
 hr {
-  max-width: 75%;
+  max-width: 90%;
   /* border-color: #f0f1f2; LIGHT GREY */
 }
 
@@ -106,7 +107,7 @@ hr {
 
 .thumbItem {
   text-align: center;
-  font-size: 125%;
+  font-size: 155%;
 }
 
 .name {
@@ -114,23 +115,40 @@ hr {
 }
 
 .emModal {
-  min-width: 70%;
-  max-width: 70%;
-  min-height: 55%;
-  max-height: 55%;
+  min-width: 64%;
+  max-width: 64%;
+  min-height: 70%;
+  max-height: 70%;
   position: fixed;
-  top: 23%;
+  top: 12%;
   left: 15%;
   background-color: #ffffff; /* WHITE */
   border-radius: 15px;
+  padding: 3%;
 }
 
 .pic {
-  min-width: 30%;
-  max-width: 30%;
-  margin: 4% 35%;
+  min-width: 40%;
+  max-width: 40%;
+  margin: 4% 30%;
 }
 
+.thumb-text {
+
+}
+
+.thumb-wrap {
+  line-height: 1;
+}
+
+.grey {
+  background-color: rgba(66, 72, 82, .5);
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 /* IDS */
 
@@ -172,10 +190,9 @@ hr {
   }
 
   .emModal {
-    min-width: 55%;
-    max-width: 55%;
-    top: 25.5%;
-    left: 25%;
+    min-width: 49%;
+    max-width: 49%;
+    left: 22.5%;
   }
 
 }
@@ -189,9 +206,8 @@ hr {
   }
 
   .emModal {
-    min-width: 38%;
-    max-width: 38%;
-    top: 26.7%;
+    min-width: 32%;
+    max-width: 32%;
     left: 31%;
   }
 
