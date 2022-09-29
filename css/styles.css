@@ -125,7 +125,7 @@ hr {
   border: 5px solid white;
   border-radius: 5px;
   padding: 2%;
-  font-size: xx-large;
+  font-size: large;
   font-weight: bold;
 }
 
@@ -137,11 +137,11 @@ hr {
       }
 
 .left-btn {
-  left: 21%;
+  left: 5%;
 }
 
 .right-btn {
-  left: 73%;
+  left: 89%;
 }
 
 .thumbItem {
@@ -247,6 +247,18 @@ hr {
     font-size: 200%;
   }
 
+  .pg-btn {
+    font-size: x-large;
+  }
+
+  .left-btn {
+    left: 12.5%;
+  }
+
+  .right-btn {
+    left: 81.5%;
+  }
+
 }
 
 @media (min-width: 1024px) {
@@ -261,6 +273,18 @@ hr {
     min-width: 32%;
     max-width: 32%;
     left: 31%;
+  }
+
+  .pg-btn {
+    font-size: xx-large;
+  }
+
+  .left-btn {
+    left: 21%;
+  }
+
+  .right-btn {
+    left: 73%;
   }
 
 }
