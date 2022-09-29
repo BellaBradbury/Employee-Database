@@ -126,8 +126,8 @@ function createModal(index) {
   });
 
   rightBtn.addEventListener( 'click', e => {
-    const next = index + 1;
-    console.log(next);
+    let next = parseInt(index) + 1;
+    createModal(next);
   });
 }
 
