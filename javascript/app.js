@@ -92,6 +92,11 @@ function createModal(index) {
           <p class="thumbItem">Birthday: ${dob}</p>
         </div>
       </div>
+
+      <div class="page-btns">
+        <button type="submit" class="left-btn pg-btn">&lt;</button>
+        <button type="submit" class="right-btn pg-btn">&gt;</button>
+      </div>
     </div>
   `;
 
