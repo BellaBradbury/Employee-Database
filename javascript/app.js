@@ -94,20 +94,40 @@ function createModal(index) {
       </div>
 
       <div class="page-btns">
-        <button type="submit" class="left-btn pg-btn">&lt;</button>
-        <button type="submit" class="right-btn pg-btn">&gt;</button>
+        <button type="submit" class="left-btn pg-btn hidden">&lt;</button>
+        <button type="submit" class="right-btn pg-btn hidden">&gt;</button>
       </div>
     </div>
   `;
 
   windowContent.innerHTML = emWindowInfo;
-  console.log(emWindowInfo);
 
   const exitBtn = document.querySelector('.exit-btn');
   const overlay = document.querySelector('.overlay');
 
   exitBtn.addEventListener( 'click', e => {
     overlay.style.display = 'none';
+  });
+
+  const leftBtn = document.querySelector('.left-btn');
+  const rightBtn = document.querySelector('.right-btn');
+
+  if (index > 0) {
+    leftBtn.classList.remove('hidden');
+  }
+
+  if (index < 11) {
+    rightBtn.classList.remove('hidden');
+  }
+
+  leftBtn.addEventListener( 'click', e => {
+    const previous = index - 1;
+    createModal(previous);
+  });
+
+  rightBtn.addEventListener( 'click', e => {
+    const next = index + 1;
+    console.log(next);
   });
 }
 
