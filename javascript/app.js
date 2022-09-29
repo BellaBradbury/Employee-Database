@@ -78,7 +78,7 @@ function createModal(index) {
   let dob = getDOB(xDOB);
 
   const emWindowInfo = `
-    <div class="grey">
+    <div class="grey overlay">
       <div class='emModal' >
         <button type="submit" class="exit-btn">X</button>
         <img src="${pic}" class="pic">
@@ -97,6 +97,13 @@ function createModal(index) {
 
   windowContent.innerHTML = emWindowInfo;
   console.log(emWindowInfo);
+
+  const exitBtn = document.querySelector('.exit-btn');
+  const overlay = document.querySelector('.overlay');
+
+  exitBtn.addEventListener( 'click', e => {
+    overlay.style.display = 'none';
+  });
 }
 
 database.addEventListener( 'click', e => {
