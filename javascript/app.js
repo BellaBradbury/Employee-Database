@@ -9,9 +9,8 @@ const emWindow = document.getElementById('#window');
 const windowContent = document.querySelector('.window-content');
 const thumbItem = document.getElementsByClassName('thumbItem');
 
-const userSearch = document.getElementById('#search');
 let employeeArr = [];
-let searchArr = [];
+let nameArr = [];
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
   // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
@@ -29,10 +28,8 @@ function fetchData() {
 fetchData();
 
 function createEmployee(data) {
-  // let emNumber = 0;
 
   data.map( ( employee, index ) => {
-    // emNumber += 1;
 
     let pfp = `${employee.picture.medium}`;
     let name = `${employee.name.first} ${employee.name.last}`;
@@ -50,6 +47,9 @@ function createEmployee(data) {
           </div>
       </div>
     `;
+
+    let searchName = name.toLowerCase();
+    nameArr.push(searchName);
 
     database.insertAdjacentHTML('beforeend', emCardInfo);
   });
@@ -139,7 +139,7 @@ database.addEventListener( 'click', e => {
 // CREATES AND INSERTS SEARCH BAR ONTO BASE PAGE
 let searchBar = `
   <label for="search" class="search-form">
-    <input id="search" placeholder="Search by name...">
+    <input id="user-search" placeholder="Search by name...">
     <button type="button" class="search-btn">SEARCH</button>
   </label>
 `;
@@ -147,20 +147,30 @@ let searchBar = `
 pageHeader.insertAdjacentHTML('beforeend', searchBar);
 
 // CHECKS USER INPUT AGAINST KNOWN PROFILES AND DISPLAYS THEM
-// const searchEmployees = (searchValue, employeeArr) => {
-//
-//   for ( let i = 0; i < employeeArr.length; i++ ) {
-//     if ( employeeArr[i].includes(searchValue) ) {
-//       searchArr.push(employeeArr[i]);
-//     }
-//   }
-//     createEmployee(searchArr,1);
-// };
-//
-// console.log(searchArr);
+let searchInput = document.querySelector('#user-search');
+let searchValue = searchInput.value.toLowerCase();
+
+console.log(nameArr);
+
+console.log(nameArr.length);
+
+function searchEmployees (searchValue, nameArr) {
+  for ( let i = 0; i < nameArr.length; i++ ) {
+    if ( nameArr[i].includes(searchValue) ) {
+      emCard.style.display = 'block';
+    } else {
+      emCard.style.display = 'none';
+    }
+  }
+}
 
 // CALLS SEARCH FUNCTION
-// userSearch.addEventListener('keyup', (event) => {
-//   let searchInput = event.target.value.toLowerCase();
-//   searchEmployees(searchInput);
-// });
+const searchBtn = document.querySelector('.search-btn');
+
+searchInput.addEventListener('keyup', (event) => {
+  searchEmployees();
+});
+
+searchBtn.addEventListener('submit', (event) => {
+  searchEmployees();
+});

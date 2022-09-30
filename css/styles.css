@@ -54,6 +54,7 @@ hr {
   align-items: center;
   justify-content: center;
   padding-top: 15px;
+  margin-bottom: 75vh;
 }
 
 .flex-item {
@@ -231,6 +232,7 @@ hr {
     grid-template-columns: 40% 40%;
     grid-gap: 5%;
     padding: 25px;
+    margin-bottom: 50vh;
   }
 
   .emModal {
@@ -267,6 +269,7 @@ hr {
     grid-template-columns: 30% 30% 30%;
     grid-gap: 5%;
     padding: 25px;
+    margin-bottom: 25vh;
   }
 
   .emModal {
