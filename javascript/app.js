@@ -157,9 +157,6 @@ pageHeader.insertAdjacentHTML('beforeend', searchBar);
 let searchInput = document.querySelector('#user-search');
 let searchValue;
 
-console.log(nameArr);
-console.log(nameArr.length);
-
 function searchEmployees (input) {
   for ( let i = 0; i < nameArr.length; i++ ) {
     if ( nameArr[i].includes(input) ) {
