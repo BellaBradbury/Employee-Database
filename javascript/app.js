@@ -160,12 +160,14 @@ let searchValue = searchInput.value.toLowerCase();
 console.log(nameArr);
 console.log(nameArr.length);
 
-function searchEmployees () {
+function searchEmployees (index) {
   for ( let i = 0; i < nameArr.length; i++ ) {
+    const employee = employeeArr[index];
+
     if ( nameArr[i].includes(searchValue) ) {
-      emCard.style.display = 'block';
+      emCard[i].style.display = 'block';
     } else {
-      emCard.style.display = 'none';
+      emCard[i].style.display = "none";
     }
   }
 }
