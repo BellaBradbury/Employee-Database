@@ -1,8 +1,7 @@
 const url = "https://randomuser.me/api/1.4/?results=12&nat=us&inc=name,location,email,dob,cell,picture";
 
-const database = document.querySelector('#employees');
 const pageHeader = document.querySelector('.header');
-
+const database = document.querySelector('#employees');
 const emCard = document.getElementsByClassName('emCard');
 
 const emWindow = document.getElementById('#window');
@@ -27,10 +26,9 @@ function fetchData() {
 
 fetchData();
 
+// CREATES EMPLOYEE CARDS TO DISPLAY ON BASE PAGE
 function createEmployee(data) {
-
   data.map( ( employee, index ) => {
-
     let pfp = `${employee.picture.medium}`;
     let name = `${employee.name.first} ${employee.name.last}`;
     let email = `${employee.email}`;
@@ -48,15 +46,16 @@ function createEmployee(data) {
       </div>
     `;
 
+    // adds each employee's name to nameArr
     let searchName = name.toLowerCase();
     nameArr.push(searchName);
 
+    // displays employee card on base page
     database.insertAdjacentHTML('beforeend', emCardInfo);
   });
 }
 
 // MAKES AN EMPLOYEE'S SECTION CLICKABLE TO REVEAL OVERLAY
-
 function createModal(index) {
   const employee = employeeArr[index];
 
@@ -77,6 +76,7 @@ function createModal(index) {
 
   let dob = getDOB(xDOB);
 
+  // creates modal html & inserts it into window
   const emWindowInfo = `
     <div class="grey overlay">
       <div class='emModal' >
@@ -102,6 +102,7 @@ function createModal(index) {
 
   windowContent.innerHTML = emWindowInfo;
 
+  // allows modal to close (*not refresh*) unpon click of exit button
   const exitBtn = document.querySelector('.exit-btn');
   const overlay = document.querySelector('.overlay');
 
@@ -109,15 +110,12 @@ function createModal(index) {
     overlay.style.display = 'none';
   });
 
+  // replaces modal html with previous employee upon left button click
+    // & hides left button on first employee
   const leftBtn = document.querySelector('.left-btn');
-  const rightBtn = document.querySelector('.right-btn');
 
   if (index > 0) {
     leftBtn.classList.remove('hidden');
-  }
-
-  if (index < 11) {
-    rightBtn.classList.remove('hidden');
   }
 
   leftBtn.addEventListener( 'click', e => {
@@ -125,12 +123,21 @@ function createModal(index) {
     createModal(previous);
   });
 
+  // replaces modal html with next employee upon right button click
+    // & hides right button on last employee
+  const rightBtn = document.querySelector('.right-btn');
+
+  if (index < 11) {
+    rightBtn.classList.remove('hidden');
+  }
+
   rightBtn.addEventListener( 'click', e => {
     let next = parseInt(index) + 1;
     createModal(next);
   });
 }
 
+// CREATES MODAL UNPON EMPLOYEE CARD CLICK
 database.addEventListener( 'click', e => {
   const index = e.target.closest('.emCard').dataset.index;
   createModal(index);
@@ -151,10 +158,9 @@ let searchInput = document.querySelector('#user-search');
 let searchValue = searchInput.value.toLowerCase();
 
 console.log(nameArr);
-
 console.log(nameArr.length);
 
-function searchEmployees (searchValue, nameArr) {
+function searchEmployees () {
   for ( let i = 0; i < nameArr.length; i++ ) {
     if ( nameArr[i].includes(searchValue) ) {
       emCard.style.display = 'block';
@@ -168,9 +174,9 @@ function searchEmployees (searchValue, nameArr) {
 const searchBtn = document.querySelector('.search-btn');
 
 searchInput.addEventListener('keyup', (event) => {
-  searchEmployees();
+  searchEmployees(searchValue, nameArr);
 });
 
 searchBtn.addEventListener('submit', (event) => {
-  searchEmployees();
+  searchEmployees(searchValue, nameArr);
 });
