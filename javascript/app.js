@@ -155,17 +155,15 @@ pageHeader.insertAdjacentHTML('beforeend', searchBar);
 
 // CHECKS USER INPUT AGAINST KNOWN PROFILES AND DISPLAYS THEM
 let searchInput = document.querySelector('#user-search');
-let searchValue = searchInput.value.toLowerCase();
+let searchValue;
 
 console.log(nameArr);
 console.log(nameArr.length);
 
-function searchEmployees (index) {
+function searchEmployees (input) {
   for ( let i = 0; i < nameArr.length; i++ ) {
-    const employee = employeeArr[index];
-
-    if ( nameArr[i].includes(searchValue) ) {
-      emCard[i].style.display = 'block';
+    if ( nameArr[i].includes(input) ) {
+      emCard[i].style.display = 'flex';
     } else {
       emCard[i].style.display = "none";
     }
@@ -175,10 +173,20 @@ function searchEmployees (index) {
 // CALLS SEARCH FUNCTION
 const searchBtn = document.querySelector('.search-btn');
 
-searchInput.addEventListener('keyup', (event) => {
-  searchEmployees(searchValue, nameArr);
+searchInput.addEventListener('keyup', () => {
+  searchValue = searchInput.value.toLowerCase();
+  searchEmployees(searchValue);
 });
 
-searchBtn.addEventListener('submit', (event) => {
-  searchEmployees(searchValue, nameArr);
+searchBtn.addEventListener('submit', () => {
+  searchValue = searchInput.value.toLowerCase();
+  searchEmployees(searchValue);
 });
+
+// searchInput.addEventListener('keyup', (event) => {
+//   searchEmployees(searchValue, nameArr);
+// });
+//
+// searchBtn.addEventListener('submit', (event) => {
+//   searchEmployees(searchValue, nameArr);
+// });
