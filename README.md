@@ -1,7 +1,7 @@
 # Connect To And Use A Public API
 Team Treehouse - Front End Web Development TechDegree - Project 8
 
-Submitted -/-/22
+Submitted 10/6/22 *EXCEEDS EXPECTATIONS*
 
 -SKILLS USED-
 * Public API
