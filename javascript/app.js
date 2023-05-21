@@ -12,12 +12,11 @@ let employeeArr = [];
 let nameArr = [];
 
 // FETCHES 12 RANDOM UNITED STATES "EMPLOYEES"
-  // WITH FULL NAME, FULL LOCATION, EMIAL, DOB, CELL #, AND PICTURE
+  // WITH FULL NAME, FULL LOCATION, EMAIL, DOB, CELL #, AND PICTURE
 function fetchData() {
   return fetch(url)
     .then( response => response.json() )
     .then( info => {
-      const data = info.results;
       employeeArr = info.results;
       createEmployee(info.results);
     })
@@ -102,7 +101,7 @@ function createModal(index) {
 
   windowContent.innerHTML = emWindowInfo;
 
-  // allows modal to close (*not refresh*) unpon click of exit button
+  // allows modal to close (*not refresh*) upon click of exit button
   const exitBtn = document.querySelector('.exit-btn');
   const overlay = document.querySelector('.overlay');
 
@@ -137,7 +136,7 @@ function createModal(index) {
   });
 }
 
-// CREATES MODAL UNPON EMPLOYEE CARD CLICK
+// CREATES MODAL UPON EMPLOYEE CARD CLICK
 database.addEventListener( 'click', e => {
   const index = e.target.closest('.emCard').dataset.index;
   createModal(index);
@@ -179,11 +178,3 @@ searchBtn.addEventListener('submit', () => {
   searchValue = searchInput.value.toLowerCase();
   searchEmployees(searchValue);
 });
-
-// searchInput.addEventListener('keyup', (event) => {
-//   searchEmployees(searchValue, nameArr);
-// });
-//
-// searchBtn.addEventListener('submit', (event) => {
-//   searchEmployees(searchValue, nameArr);
-// });

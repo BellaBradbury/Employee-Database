@@ -7,7 +7,7 @@ Team Treehouse - Web Development TechDegree - Project 8
 
 -SKILLS USED-
 * Public API
-* API Requestes
+* API Requests
 * Asynchronous Programming
 * JSON
 * JavaScript
