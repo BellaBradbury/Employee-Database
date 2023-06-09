@@ -3,7 +3,10 @@ Team Treehouse - Web Development TechDegree - Project 8
   - Submitted 10/6/22 ***EXCEEDS EXPECTATIONS***
   
  Team Treehouse - Full Stack JavaScript TechDegree - Project 5
-  - Submitted 1/20/23 ***EXCEEDS EXPECTATIONS***
+  - Submitted 01/20/23 ***EXCEEDS EXPECTATIONS***
+
+ Team Treehouse - Full Stack JavaScript TechDegree - Project 8
+  - Submitted 06/08/23 ***EXCEEDS EXPECTATIONS***
 
 -SKILLS USED-
 * Public API
